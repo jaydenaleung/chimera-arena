@@ -75,6 +75,7 @@ async function generateWithGemini(prompt) {
     throw new Error('Gemini API key is not configured. Please add your key in the API Configuration section.');
   }
 
+  // Gemini 2.0 Flash with image generation support
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
 
   const response = await fetch(url, {

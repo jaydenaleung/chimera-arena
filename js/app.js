@@ -2,6 +2,9 @@
  * Main application logic for Chimera Arena.
  */
 
+// Timeout for Pollinations image loading (URL-based generation may be slow)
+const POLLINATIONS_TIMEOUT_MS = 15000;
+
 // State to track generated chimeras
 const state = {
   chimera1: null, // { name, animalA, animalB, imageUrl }
@@ -107,7 +110,7 @@ async function handleGenerateChimera(chimeraNum) {
     // If using Pollinations (URL-based), image loading may take time
     if (getProvider() === 'pollinations') {
       // Set a timeout in case load event fires slow
-      setTimeout(hideLoading, 15000);
+      setTimeout(hideLoading, POLLINATIONS_TIMEOUT_MS);
     }
 
     updateBattleButton();
@@ -155,7 +158,7 @@ async function handleBattle() {
     resultEl.appendChild(nameTag);
 
     if (getProvider() === 'pollinations') {
-      setTimeout(hideLoading, 15000);
+      setTimeout(hideLoading, POLLINATIONS_TIMEOUT_MS);
     }
   } catch (err) {
     hideLoading();
