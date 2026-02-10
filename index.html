@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chimera Arena - AI Animal Fusion &amp; Battle Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>🧬 Chimera Arena</h1>
+      <p class="subtitle">Fuse animals into hybrids &amp; watch them battle!</p>
+      <div id="auth-section">
+        <div id="google-signin-btn"></div>
+        <div id="user-profile" class="hidden">
+          <img id="user-avatar" alt="User avatar" />
+          <span id="user-name"></span>
+          <button id="signout-btn" class="btn btn-small">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- API Key Section -->
+    <section id="api-config" class="card">
+      <h2>⚙️ API Configuration</h2>
+      <p>Provide your Gemini API key for premium image generation, or use Pollinations AI (free, no key needed).</p>
+      <div class="api-key-row">
+        <label for="gemini-key-input">Gemini API Key (optional):</label>
+        <input type="password" id="gemini-key-input" placeholder="Enter your Gemini API key" />
+        <button id="save-key-btn" class="btn btn-small">Save</button>
+      </div>
+      <div class="provider-select">
+        <label>Image Provider:</label>
+        <select id="provider-select">
+          <option value="pollinations">Pollinations AI (Free)</option>
+          <option value="gemini">Gemini Imagen (Requires API Key)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Fusion Lab -->
+    <section id="fusion-lab" class="card">
+      <h2>🧪 Genetic Splicing Lab</h2>
+      <p>Select two animals to fuse into a unique chimera hybrid.</p>
+
+      <div class="fusion-panels">
+        <!-- Chimera 1 -->
+        <div class="fusion-panel" id="chimera-panel-1">
+          <h3>Chimera #1</h3>
+          <div class="animal-selectors">
+            <div class="animal-select">
+              <label for="animal-1a">Animal A:</label>
+              <select id="animal-1a" class="animal-dropdown"></select>
+            </div>
+            <span class="fusion-symbol">🧬</span>
+            <div class="animal-select">
+              <label for="animal-1b">Animal B:</label>
+              <select id="animal-1b" class="animal-dropdown"></select>
+            </div>
+          </div>
+          <button class="btn btn-primary generate-btn" data-chimera="1">Generate Chimera #1</button>
+          <div class="chimera-result" id="result-1">
+            <div class="placeholder">Your chimera will appear here</div>
+          </div>
+        </div>
+
+        <!-- VS Divider -->
+        <div class="vs-divider">
+          <span>⚔️</span>
+          <span>VS</span>
+        </div>
+
+        <!-- Chimera 2 -->
+        <div class="fusion-panel" id="chimera-panel-2">
+          <h3>Chimera #2</h3>
+          <div class="animal-selectors">
+            <div class="animal-select">
+              <label for="animal-2a">Animal A:</label>
+              <select id="animal-2a" class="animal-dropdown"></select>
+            </div>
+            <span class="fusion-symbol">🧬</span>
+            <div class="animal-select">
+              <label for="animal-2b">Animal B:</label>
+              <select id="animal-2b" class="animal-dropdown"></select>
+            </div>
+          </div>
+          <button class="btn btn-primary generate-btn" data-chimera="2">Generate Chimera #2</button>
+          <div class="chimera-result" id="result-2">
+            <div class="placeholder">Your chimera will appear here</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Battle Section -->
+    <section id="battle-section" class="card">
+      <h2>⚔️ Battle Arena</h2>
+      <p>Generate both chimeras above, then pit them against each other!</p>
+      <button id="battle-btn" class="btn btn-battle" disabled>
+        🔥 Generate Battle Scene 🔥
+      </button>
+      <div id="battle-result">
+        <div class="placeholder">The epic battle scene will appear here</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Chimera Arena &mdash; Powered by Pollinations AI &amp; Gemini Imagen</p>
+  </footer>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <p id="loading-text">Generating your chimera...</p>
+  </div>
+
+  <script src="js/animals.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/imageGen.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
